@@ -1,10 +1,12 @@
 Prepend code:
 
+M452   ;Laser mode
 G28    ;Home All 
+       ;This may need to be removed for Double sided boards
 
 G21    ;Set mm
-G1 Z10 F5000 ; move bed well below laser aperature
-G20    ;set back to inch
+G1 Z20 F5000 ; move bed well below laser aperature
+
 
 M83    ;Extruder relative. 
        ;This is set so repetier host can "Show" laser cuts
@@ -18,16 +20,18 @@ M117 Set Origin  ;Display
 M226 P76 S0 X1   ;Wait for user to hit Sel
 M117 Resuming
 
-G91    ;Set everything to relative
+G92 Z20    ;Set new origins for ZXY Z20mm and 0 X,Y
+G20    ;set back to inch
+
 
 Things to change in flatcam output
 
-Remove G90
+Remove CRLF after G94
 
 
 TODO
-Figure out '0 for Z Axis'
-Find Replacement for G94 NO IMPL in repetier
+Figure out 'Laser cut depth for Z Axis' Which goes in Flatcam
+
 
 
 Append:
