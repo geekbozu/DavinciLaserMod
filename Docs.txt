@@ -1,0 +1,37 @@
+Prepend code:
+
+G28    ;Home All 
+
+G21    ;Set mm
+G1 Z10 F5000 ; move bed well below laser aperature
+G20    ;set back to inch
+
+M83    ;Extruder relative. 
+       ;This is set so repetier host can "Show" laser cuts
+
+M84    ; Disable steppers for hand movement
+       ;At somepoint add in ability to 
+       ;Turn laser on @ lower power 
+       ;For ease of setting origin
+       
+M117 Set Origin  ;Display
+M226 P76 S0 X1   ;Wait for user to hit Sel
+M117 Resuming
+
+G91    ;Set everything to relative
+
+Things to change in flatcam output
+
+Remove G90
+
+
+TODO
+Figure out '0 for Z Axis'
+Find Replacement for G94 NO IMPL in repetier
+
+
+Append:
+
+G21    ;Set mm
+G90
+G1 Z10 F5000 ; move bed well below laser aperature
